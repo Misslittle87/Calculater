@@ -217,6 +217,11 @@ namespace Calculater
                             break;
                     }
                 }
+                else if (userInput.ToString() == marcus.ToUpper())
+                {
+                    Console.WriteLine("Hej!");
+                    myBool = false;
+                }
                 /* Denna elsen är till för den första if-sattsen som en felhanterare.
                  */
                 else
