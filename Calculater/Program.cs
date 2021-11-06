@@ -39,7 +39,7 @@ namespace Calculater
             /* Här börjar min while-loop.
              * Jag tycker det är enkelt att använda en bool som vilkor
              * då användaren kan välja att stänga av programmet.
-             */
+             */            
             while (myBool)
             {
                 /* Här börjar min meny jag har valt att använda. Och till menyn har jag
@@ -61,7 +61,7 @@ namespace Calculater
                  * så att programmet inte ska cracha. Userinputen måste också stå inom loopen
                  * då vi inte vill att detta valet ska sparas.
                  * 
-                 */
+                 */ 
                 if (Int32.TryParse(Console.ReadLine(), out int userInput))
                 {
                     /* userInput är vad användaren knappar in från menyn.
@@ -217,7 +217,7 @@ namespace Calculater
                             break;
                     }
                 }
-                else if (userInput.ToString() == marcus.ToUpper())
+                else if (userInput.ToString() != marcus.ToUpper())
                 {
                     Console.WriteLine("Hej!");
                     myBool = false;
