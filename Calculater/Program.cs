@@ -62,14 +62,14 @@ namespace Calculater
                  * då vi inte vill att detta valet ska sparas.
                  * Int32.TryParse(Console.ReadLine(), out int userInput);
                  */
-                Int32.TryParse(Console.ReadLine(), out int userInput);
-                if (userInput <= 6)
+                string userInput = Console.ReadLine();                
+                if (Int32.TryParse(Console.ReadLine(), out int answer))
                 {
                     /* userInput är vad användaren knappar in från menyn.
                      * Switchen innehåller 6 cases och en default. Jag har använt ett
                      * case för varje räkneoperator.
                      */
-                    switch (userInput)
+                    switch (answer)
                     {
                         case 1:
                             Console.Clear(); // För att rensa skärmen
@@ -221,10 +221,11 @@ namespace Calculater
                 /* En else if är till för att fånga upp om man skriver marcus istället för ett menyval
                  * och den säger "Hej!" för att sedan sätta boolen till false som avslutar programmet.
                  */                
-                else if (userInput.ToString() == "MARCUS".ToUpper())
+                else if (userInput.ToUpper() == "MARCUS".ToUpper())
                 {
                     Console.WriteLine("Hej!");
                     myBool = false;
+                    QuitToMenu();
                 }
                 /* Denna elsen är till för den första if-sattsen som en felhanterare.
                  */
