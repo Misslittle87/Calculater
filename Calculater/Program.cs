@@ -10,7 +10,7 @@ namespace Calculater
         {
             /* Detta tycker jag är ett snyggt sätt att avsluta en skärm.
              *Jag använder Console.Clear för att rensa varje val, och 
-             *lagt in en QuitToMenu så att man kommer tillbaka till huvudmenyn.
+             *lagt in en QuitToMenu-metod så att man kommer tillbaka till huvudmenyn.
              *Har även lagt till färgen gul på texten för att användaren
              *lätt kan se skillnad.
              */
@@ -62,8 +62,8 @@ namespace Calculater
                  * då vi inte vill att detta valet ska sparas.
                  * Int32.TryParse(Console.ReadLine(), out int userInput);
                  */
-                string userInput = Console.ReadLine();                
-                if (Int32.TryParse(Console.ReadLine(), out int answer))
+                string userInput = Console.ReadLine(); // Kollar vad användaren skrivit in för menyval         
+                if (Int32.TryParse(Console.ReadLine(), out int answer)) //Konverterar userInput till en int
                 {
                     /* userInput är vad användaren knappar in från menyn.
                      * Switchen innehåller 6 cases och en default. Jag har använt ett
@@ -221,11 +221,11 @@ namespace Calculater
                 /* En else if är till för att fånga upp om man skriver marcus istället för ett menyval
                  * och den säger "Hej!" för att sedan sätta boolen till false som avslutar programmet.
                  */                
-                else if (userInput.ToUpper() == "MARCUS".ToUpper())
+                else if (userInput.ToUpper() == "MARCUS".ToUpper()) // här har jag felhanterat stora och små bokstäver
                 {
+                    Console.Clear();
                     Console.WriteLine("Hej!");
-                    myBool = false;
-                    QuitToMenu();
+                    myBool = false;                    
                 }
                 /* Denna elsen är till för den första if-sattsen som en felhanterare.
                  */
