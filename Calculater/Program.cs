@@ -47,9 +47,9 @@ namespace Calculater
                  *\n gör att jag får en ny rad, \t tabbar in raderna ett steg.
                  */
                 Console.Clear();
-                Console.WriteLine("\n\tHej och välkommen till miniräknaren!");
-                Console.WriteLine("\n\tVänligen välj en operator.");
-                Console.WriteLine("\n\t================================");
+                Console.WriteLine("\n\tHej och välkommen till miniräknaren!");                
+                Console.WriteLine("\t====================================");
+                Console.WriteLine("\n\t>>> Vänligen välj en operator <<<");
                 Console.WriteLine("\n\t[1] - Addition");                
                 Console.WriteLine("\t[2] - Subtraktion");
                 Console.WriteLine("\t[3] - Multiplikation");
@@ -60,9 +60,10 @@ namespace Calculater
                  * inom parantesen har jag en annan felhantering om användaren skriver fel
                  * så att programmet inte ska cracha. Userinputen måste också stå inom loopen
                  * då vi inte vill att detta valet ska sparas.
-                 * 
-                 */ 
-                if (Int32.TryParse(Console.ReadLine(), out int userInput))
+                 * Int32.TryParse(Console.ReadLine(), out int userInput);
+                 */
+                Int32.TryParse(Console.ReadLine(), out int userInput);
+                if (userInput <= 6)
                 {
                     /* userInput är vad användaren knappar in från menyn.
                      * Switchen innehåller 6 cases och en default. Jag har använt ett
@@ -175,7 +176,7 @@ namespace Calculater
                                         //Annars görs denna uträkningen
                                         Console.WriteLine($"\n\tResultat: {number7} / {number8} = " + resault4);
                                         myCalculater.Add(divide);
-                                    }                                    
+                                    }
                                 }
                             }
                             else
@@ -191,7 +192,7 @@ namespace Calculater
                              */
                             if (myCalculater.Count <= 0) //Denna if är till för att kolla om det finns några uträkningar.
                             {
-                                Console.WriteLine("\tDu har inga sparade uträkningar!");
+                                Console.WriteLine("\n\tDu har inga sparade uträkningar!");
                             }
                             else if (myCalculater.Count > 0) //Annars ska den utföra denna if-sattsen.
                             {
@@ -212,12 +213,15 @@ namespace Calculater
                         default: //defaulten finns till för om i ALLA ANDRA FALL (än 1-6) så skriver den ut detta. En form av felhantering
                             Console.Clear();
                             Console.WriteLine("\n\tSådär kan du ju inte skriva!");
-                            Console.WriteLine("\n\tDu måste välja mellan menyval 1-5!");
+                            Console.WriteLine("\tDu måste välja mellan menyval 1-5!");
                             QuitToMenu();
                             break;
                     }
                 }
-                else if (userInput.ToString() != marcus.ToUpper())
+                /* En else if är till för att fånga upp om man skriver marcus istället för ett menyval
+                 * och den säger "Hej!" för att sedan sätta boolen till false som avslutar programmet.
+                 */                
+                else if (userInput.ToString() == "MARCUS".ToUpper())
                 {
                     Console.WriteLine("Hej!");
                     myBool = false;
@@ -230,6 +234,11 @@ namespace Calculater
                     Console.WriteLine("\n\tDet där var väl ändå inte rätt!");
                     QuitToMenu();
                 }
+                /* Förbättringsförslag
+                 * - Man kan göra räknesetten med en returnerande klass
+                 * - Att kunna räkan flera siffror i samma uträkning
+                 * - Kunna använda alla räkneoperatorer i samma uträkning
+                 */
             }
         }
     }
